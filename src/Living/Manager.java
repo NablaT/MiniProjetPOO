@@ -16,7 +16,9 @@ public class Manager extends Human {
 	 */
 	
 	public Manager(String nom) {
-		super(nom);
+		super.nom=nom;
+		super.type="Manager";
+		super.id='m'+this.numberOfManagers+super.nom; 
 		this.numberOfManagers++;
 	}
 	
@@ -35,4 +37,5 @@ public class Manager extends Human {
 	public static void setNumberOfStudent(int numberOfManager) {
 		Manager.numberOfManagers = numberOfManager;
 	}
+	
 }

@@ -11,13 +11,16 @@ public class Teacher extends Borrower {
 
 	private static int numberOfTeachers;
 	
+	
 	/**
 	 * Constructeur de la classe Teacher. Ce constructeur prend en parametre un nom et fait appel au constructeur
 	 * de la classe Borrower. Le nombre de Teacher est incrémenté de 1.
 	 * @param nom
 	 */
 	public Teacher(String nom) {
-		super(nom);
+		super.nom=nom;
+		super.id='t'+this.numberOfTeachers+super.nom; 
+		super.type="Teacher";
 		this.numberOfTeachers++;
 	}
 	

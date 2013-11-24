@@ -3,23 +3,24 @@ package Living;
 /**
  * Classe Human. Cette classe permet de définir un être humain. Un être humain se caractérise par un nom.
  */
-public class Human {
+public abstract class Human {
 
-	private String nom;
-	private String id;
-	private static int numberOfHuman;
+	protected String nom;
+	protected String id;
+	//private static int numberOfHuman;
+	protected String type;
 	
 	/**
 	 * Constructeur de la classe Human. Il permet de créer un humain à partir d'un nom specifié en parametre. 
 	 * @param nom
 	 */
-	
+	/*
 	public Human(String nom){
 		this.nom=nom; 
 		this.id=this.numberOfHuman+nom;
 		this.numberOfHuman++;
 	}
-	
+	*/
 	/**
 	 * Methode getNom. Cette methode retourne le nom de l'humain.
 	 * @return
@@ -42,10 +43,10 @@ public class Human {
 	 * Methode getNumberOfHuman. Cette methode retourne le nombre d'humains.
 	 * @return
 	 */
-	
+	/*
 	public int getNumberOfHuman(){
 		return this.numberOfHuman;
-	}
+	}*/
 	
 	/**
 	 * Methode setNom. Cette methode permet de remplacer le nom de l'humain par celui specifié en parametre. 
@@ -67,8 +68,8 @@ public class Human {
 	/**
 	 * Methode setNumberOfHuman. Cette methode remplace le nombre de Human.
 	 * @param numberOfHuman
-	 */
+	 *//*
 	public static void setNumberOfStudent(int numberOfHuman) {
 		Human.numberOfHuman = numberOfHuman;
-	}
+	}*/
 }
