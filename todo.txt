@@ -1,0 +1,17 @@
+==> TODO
+
+JAVADOC
+
+Création classe: Camera, HeadPhone, Phone, Menu, MenuBorrower, MenuManagement, MenuCaracteristic
+
+Utilisation des statics dans les classes du package Living & Material. Les statics permettent de connaître le nombre d'instances créées mais peut etre que ca sucks.
+
++JUnit
+
+==> IN PROGRESS
+
+
+Création classe: Stock, StockManagement,Loan
+
+
+==> DONE

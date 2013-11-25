@@ -12,6 +12,7 @@ public abstract class Material {
 
 	protected Type type;
 	protected String id;
+	protected String typeOS;
 
 	/**
 	 * Methode getType. Cette methode permet de retourner le type du materiel.
@@ -31,4 +32,21 @@ public abstract class Material {
 		return this.id;
 	}
 	
+	/**
+	 * Methode getTypeOS. Cette methode retourne le type d'OS du matériel.
+	 * @return
+	 */
+	
+	public String getTypeOS(){
+		return this.typeOS;
+	}
+	
+	/**
+	 * Methode setTypeOS. Cette methode permet de remplacer le type d'OS du matériel. 
+	 * @param typeOS
+	 */
+	
+	public void setTypeOS(String typeOS){
+		this.typeOS=typeOS;
+	}
 }
