@@ -3,11 +3,14 @@ package Material;
 /**
  * Classe Material. Cette classe abstraite est utilisé pour définir les matériels que l'on peut emprunter. Un materiel 
  * se caractérise par un nom.
+ * 
+ * @author Rémi Pourtier.
+ * 
  */
 
 public abstract class Material {
 
-	protected String type;
+	protected Type type;
 	protected String id;
 
 	/**
@@ -16,7 +19,7 @@ public abstract class Material {
 	 */
 	
 	public String getType(){
-		return this.type; 
+		return this.type.toString(); 
 	}
 	
 	/**

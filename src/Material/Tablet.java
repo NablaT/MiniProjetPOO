@@ -3,6 +3,9 @@ package Material;
 /**
  * Classe Tablet. Cette classe hérite de la classe Material. Une Tablet se définit par son identifiant, son nom 
  * ainsi que le nombre de tablette existant. 
+ * 
+ * @author Rémi Pourtier.
+ * 
  */
 
 public class Tablet extends Material{
@@ -14,7 +17,7 @@ public class Tablet extends Material{
 	 */
 	
 	public Tablet(){
-		super.type="tablet";
+		super.type=Type.TABLET;
 		numberOfTablet++;
 	}
 	
