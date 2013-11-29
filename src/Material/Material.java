@@ -4,8 +4,6 @@ package Material;
  * Classe Material. Cette classe abstraite est utilisé pour définir les matériels que l'on peut emprunter. Un materiel 
  * se caractérise par un nom.
  * 
- * @author Rémi Pourtier.
- * 
  */
 
 public abstract class Material {
@@ -48,5 +46,16 @@ public abstract class Material {
 	
 	public void setTypeOS(String typeOS){
 		this.typeOS=typeOS;
+	}
+	
+	/**
+	 * Methode equals. Elle permet de comparer deux matériels entre eux. Deux matériels sont identiques si ils ont 
+	 * le même type et le même type d'OS.
+	 * @param m
+	 * @return
+	 */
+	
+	public boolean equals(Material m){
+		return (this.type.equals(m.getType()) && this.typeOS.equals(m.getTypeOS()));
 	}
 }

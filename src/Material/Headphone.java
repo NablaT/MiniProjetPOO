@@ -11,6 +11,7 @@ public class Headphone extends Material {
 	 * Variable de classe, correspondant au nombre de casques existants.
 	 * 
 	 */
+	
 	private static int numberOfHeadphones;
 	
 	/**

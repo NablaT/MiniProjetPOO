@@ -18,14 +18,22 @@ public abstract class Human {
 	public Human(String nom){
 		this.nom=nom; 
 		this.id=this.numberOfHuman+nom;
-		this.numberOfHuman++;
+		//this.numberOfHuman++;
 	}
 	*/
+	/**
+	 * Methode getType. Cette methode retourne le type de l'humain.
+	 * @return
+	 */
+	
+	public String getType(){
+		return this.type; 
+	}
+	
 	/**
 	 * Methode getNom. Cette methode retourne le nom de l'humain.
 	 * @return
 	 */
-	
 	public String getNom(){
 		return this.nom; 
 	}
@@ -64,6 +72,7 @@ public abstract class Human {
 	public void setId(String id){
 		this.id=id;
 	}
+	
 	
 	/**
 	 * Methode setNumberOfHuman. Cette methode remplace le nombre de Human.

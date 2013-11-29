@@ -50,10 +50,11 @@ public class Stock {
 		this.stock = stock;
 	}
 	
-    /*
+    
 	public boolean isInStock(Material material) {
-		/*if(this.stock.){
-			return true;
+		switch(material.getType()){
+		case "Tablet": 
+	
 		}
 		return false;
 	}
@@ -62,6 +63,7 @@ public class Stock {
 	public void removeMaterial(Material material){
 		if(isInStock(material)){
 			
-		}*/
+		}
 	}
+	
 }

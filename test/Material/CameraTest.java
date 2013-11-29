@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MaterialTest {
+public class CameraTest {
 
 	@Before
 	public void setUp() throws Exception {
@@ -17,12 +17,18 @@ public class MaterialTest {
 	}
 
 	@Test
-	public void testGetType() {
-		
+	public void testCamera() {
+		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetId() {
-		
+	public void testGetNumberOfCameras() {
+		fail("Not yet implemented");
 	}
+
+	@Test
+	public void testSetNumberOfCamera() {
+		fail("Not yet implemented");
+	}
+
 }

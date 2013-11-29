@@ -2,9 +2,6 @@ package Material;
 
 /**
  * Type est un type énuméré contenant les différents types de material existant.
- *
- * @author Tom Veniat.
- * 
  */
 
 public enum Type {
