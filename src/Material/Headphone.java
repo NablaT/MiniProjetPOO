@@ -20,7 +20,7 @@ public class Headphone extends Material {
 	 */
 	public Headphone(){
 		super.type=Type.HEADPHONE;
-		//id="HPH"+String.valueOf(numberOfHeadphones);
+		super.id="HPH"+numberOfHeadphones;
 		numberOfHeadphones++;
 	}
 	

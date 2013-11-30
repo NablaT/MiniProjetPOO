@@ -82,53 +82,11 @@ public class StockManagement {
 	 */
 
 	public boolean makeALoan(Loan loan) {
-		if (materialIsFree(loan.getMaterial())
+		if (this.stock.isInStock(loan.getMaterial())
 				&& askForALoan(loan.getBorrower())) {
 			this.loans.add(loan);
 			this.stock.removeMaterial(loan.getMaterial());
 			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Methode materialIsFree. Cette methode vérifie si le matériel spécifié en
-	 * parametre est libre. Elle effectue cette vérification en regardant dans
-	 * le stock. Si le materiel y est, elle retourne true, sinon false.
-	 * 
-	 * @param m
-	 * @return
-	 */
-
-	public boolean materialIsFree(Material m) {
-		switch (m.getType()) {
-		case "Camera":
-			return search(this.stock.getStock().get(0), m);
-		case "Headphone":
-			return search(this.stock.getStock().get(1), m);
-		case "Phone":
-			return search(this.stock.getStock().get(2), m);
-		case "Tablet":
-			return search(this.stock.getStock().get(3), m);
-		}
-		return false;
-	}
-
-	/**
-	 * Methode search. Cette methode prend en parametre un materiel et une
-	 * liste. Elle regarde si le matériel se trouve dans la liste. Si il y est,
-	 * elle retourne true, sinon false. Deux matériels sont identiques si ils
-	 * ont
-	 * 
-	 * @param list
-	 * @param m
-	 * @return
-	 */
-
-	public boolean search(ArrayList<Material> list, Material m) {
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).equals(m))
-				return true;
 		}
 		return false;
 	}
@@ -149,6 +107,13 @@ public class StockManagement {
 
 		return false;
 	}
+	
+	/**
+	 * Methode askForAStudent. Cette methode verifie si le student en question est autorisé a faire un emprunt. Si 
+	 * il a déjà fait un emprunt, sa demande sera refusée. La methode retourne true si il peut emprunter, false sinon.
+	 * @param student
+	 * @return
+	 */
 
 	public boolean askForAStudent(Borrower student) {
 		for (int i = 0; i < this.loans.size(); i++) {
@@ -159,9 +124,17 @@ public class StockManagement {
 		return true;
 	}
 
+	/**
+	 * Methode AskForATeacher. Cette methode verifie si le teacher en question est autorisé à faire un emprunt. Un 
+	 * teacher peut faire plusieurs emprunts. 
+	 * @param teacher
+	 * @return
+	 */
 	public boolean askForATeacher(Borrower teacher) {
 		for (int i = 0; i < this.loans.size(); i++) {
-			
+			if(this.loans.get(i).getBorrower().equals(teacher)){
+				
+			}
 		}
 		return true;
 	}

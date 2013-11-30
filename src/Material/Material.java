@@ -10,8 +10,7 @@ public abstract class Material {
 
 	protected Type type;
 	protected String id;
-	protected String typeOS;
-
+	
 	/**
 	 * Methode getType. Cette methode permet de retourner le type du materiel.
 	 * @return
@@ -29,24 +28,8 @@ public abstract class Material {
 	public String getId(){
 		return this.id;
 	}
+
 	
-	/**
-	 * Methode getTypeOS. Cette methode retourne le type d'OS du matériel.
-	 * @return
-	 */
-	
-	public String getTypeOS(){
-		return this.typeOS;
-	}
-	
-	/**
-	 * Methode setTypeOS. Cette methode permet de remplacer le type d'OS du matériel. 
-	 * @param typeOS
-	 */
-	
-	public void setTypeOS(String typeOS){
-		this.typeOS=typeOS;
-	}
 	
 	/**
 	 * Methode equals. Elle permet de comparer deux matériels entre eux. Deux matériels sont identiques si ils ont 
@@ -56,6 +39,6 @@ public abstract class Material {
 	 */
 	
 	public boolean equals(Material m){
-		return (this.type.equals(m.getType()) && this.typeOS.equals(m.getTypeOS()));
+		return (this.type.equals(m.getType()));
 	}
 }

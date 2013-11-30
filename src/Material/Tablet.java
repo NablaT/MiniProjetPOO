@@ -6,7 +6,7 @@ package Material;
  * 
  */
 
-public class Tablet extends Material{
+public class Tablet extends ComputerDevice{
 	
 	private static int numberOfTablet;
 	
