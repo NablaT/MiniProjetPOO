@@ -34,7 +34,6 @@ public class Loan {
 		this.dateBack=dateBack;
 		this.borrower=borrower;
 		this.description=description;
-		this.material=new Tablet();
 	}
 	
 	/**
