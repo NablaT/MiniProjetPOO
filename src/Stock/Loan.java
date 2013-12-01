@@ -1,9 +1,10 @@
 package Stock;
 
 import java.util.Date;
-
 import Living.Borrower;
 import Material.Material;
+import Material.Tablet;
+import Material.Type;
 
 /**
  * Classe Loan. Un loan se caracterise par une date d'emprunt, une date de retour, l'emprunteur, le materiel emprunté et la description de l'emprunt. 
@@ -26,12 +27,14 @@ public class Loan {
 	 * @param dateBack
 	 * @param borrower
 	 * @param description
+	 * @param material
 	 */
-	public Loan(Date dateLoan, Date dateBack, Borrower borrower, String description){
+	public Loan(Date dateLoan, Date dateBack, Borrower borrower, String description, Type material){
 		this.dateLoan=dateLoan;
 		this.dateBack=dateBack;
 		this.borrower=borrower;
 		this.description=description;
+		this.material=new Tablet();
 	}
 	
 	/**

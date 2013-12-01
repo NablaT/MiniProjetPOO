@@ -10,10 +10,11 @@ public class MainMenu extends Menu{
 	
 	public MainMenu(){
 		int choice;
+		nbChoices=2;
+		
 		do{
-			nbChoices=2;
 			displayMainMenu();
-			choice = getValidChoice(this.nbChoices);
+			choice = getValidChoice(this.nbChoices,true);
 			handleChoice(choice);
 		}while(choice!=0);
 		sayGoodBye();
@@ -36,7 +37,7 @@ public class MainMenu extends Menu{
 	}
 
 	public void displayMainMenu(){
-		System.out.println("You are : \n	1-A borrower\n	2-A manager\n	0-Quitter");
+		System.out.println("You are : \n	1-A borrower\n	2-A manager\n	0-Quit");
 	}
 	
 	 public static void main(String[] args){

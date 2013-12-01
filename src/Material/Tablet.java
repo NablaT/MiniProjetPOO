@@ -15,7 +15,7 @@ public class Tablet extends ComputerDevice{
 	 */
 	
 	public Tablet(){
-		super.type=Type.TABLET;
+		type=Type.TABLET;
 		numberOfTablet++;
 	}
 	

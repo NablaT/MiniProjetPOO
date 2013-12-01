@@ -19,7 +19,7 @@ public class Camera extends Material {
 	 * 
 	 */
 	public Camera(){
-		super.type=Type.CAMERA;
+		type=Type.CAMERA;
 		//id="PHO"+String.valueOf(numberOfCameras);
 		numberOfCameras++;
 	}

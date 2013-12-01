@@ -19,7 +19,7 @@ public class Phone extends ComputerDevice {
 	 * 
 	 */
 	public Phone(){
-		super.type=Type.PHONE;
+		type=Type.PHONE;
 		//id="PHO"+String.valueOf(numberOfPhones);
 		numberOfPhones++;
 	}

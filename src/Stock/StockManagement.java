@@ -1,7 +1,6 @@
 package Stock;
 
 import java.util.ArrayList;
-
 import Living.Borrower;
 import Material.Material;
 
