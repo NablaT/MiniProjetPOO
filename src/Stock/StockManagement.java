@@ -66,7 +66,8 @@ public class StockManagement {
 	 */
 
 	public void initialize() {
-
+		this.stock.initialize();
+		this.loans=new ArrayList<Loan>();
 	}
 
 	/**
@@ -81,8 +82,10 @@ public class StockManagement {
 	 */
 
 	public boolean makeALoan(Loan loan) {
+		System.out.println(loan.getMaterial());	
 		if (this.stock.isInStock(loan.getMaterial())
 				&& askForALoan(loan.getBorrower())) {
+			System.out.println("true");	
 			this.loans.add(loan);
 			this.stock.removeMaterial(loan.getMaterial());
 			return true;

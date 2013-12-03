@@ -29,11 +29,12 @@ public class Loan {
 	 * @param description
 	 * @param material
 	 */
-	public Loan(Date dateLoan, Date dateBack, Borrower borrower, String description, Type material){
+	public Loan(Date dateLoan, Date dateBack, Borrower borrower, String description, Material material){
 		this.dateLoan=dateLoan;
 		this.dateBack=dateBack;
 		this.borrower=borrower;
 		this.description=description;
+		this.material=material;
 	}
 	
 	/**

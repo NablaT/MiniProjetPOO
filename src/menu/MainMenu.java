@@ -1,6 +1,7 @@
 package menu;
 
 import Stock.*;
+
 import java.util.Scanner;
 
 
@@ -11,7 +12,9 @@ public class MainMenu extends Menu{
 	public MainMenu(){
 		int choice;
 		nbChoices=2;
-		
+		Stock s=new Stock(null,null);
+		s.initialize();
+		stock=new StockManagement(null,s);
 		do{
 			displayMainMenu();
 			choice = getValidChoice(this.nbChoices,true);

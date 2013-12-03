@@ -4,9 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 import Living.*;
-import Material.Type;
-import Stock.Loan;
-import Stock.StockManagement;
+import Material.*;
+import Stock.*;
 
 public class BorrowerMenu extends Menu {
 	
@@ -15,7 +14,6 @@ public class BorrowerMenu extends Menu {
 	public BorrowerMenu(){
 		int choice;
 		nbChoices=4;
-		stock=new StockManagement(null,initializeStock());
 		do{
 			displayBorrowerMenu();
 			choice = getValidChoice(this.nbChoices,true);
@@ -43,7 +41,7 @@ public class BorrowerMenu extends Menu {
 	}
 
 	public boolean createBorrowing() {
-		Type material=getWantedMaterial();
+		Material material=getWantedMaterial();
 		Date beginning=getBeginningDate();
 		Date end=getEndDate();
 		String description = getDescription();
@@ -51,29 +49,50 @@ public class BorrowerMenu extends Menu {
 		System.out.println("Le prêt de "+material+" pour " +currentUser+ " commence le "+beginning+ " et finit le "+end+"\n raison : "+description+"\n");
 		return stock.makeALoan(l);
 	}
+	
+	public Material getWantedMaterial() {
+		Type wantedType=getWantedType();
+		OperatingSystem wantedOS=getWantedOS();
+		Material wantedMaterial = null;
+		return wantedMaterial;
+	}
+
+	private Type getWantedType() {
+		System.out.println("Wich kind of material do you need ?\n	1-Tablet\n	2-Phone\n	3-Headphone\n	4-Camera");
+		int choice=getValidChoice(4,false);
+		Type wantedType = null;
+		switch(choice){
+		case 1:
+			wantedType=Type.TABLET;break;
+		case 2:
+			wantedType=Type.PHONE;break;
+		case 3:
+			wantedType=Type.HEADPHONE;break;
+		case 4:
+			wantedType=Type.CAMERA;break;
+		}
+		return wantedType;
+	}
+	
+	public OperatingSystem getWantedOS(){
+		System.out.println("Wich Operating System do you need ?\n	1-Android\n	2-Windows\n	3-Ios\n");
+		int choice=getValidChoice(3,false);
+		OperatingSystem wantedOS = null;
+		switch(choice){
+		case 1:
+			wantedOS=OperatingSystem.ANDROID;break;
+		case 2:
+			wantedOS=OperatingSystem.WINDOWS;break;
+		case 3:
+			wantedOS=OperatingSystem.IOS;break;
+		}
+		return wantedOS;
+		
+	}
 
 	private String getDescription() {
 		System.out.println("Why do you need it ?");
 		return getString();
-	}
-
-	public Type getWantedMaterial() {
-		System.out.println("Wich material do you need ?\n	1-Tablet\n	2-Phone\n	3-Headphone\n	4-Camera");
-		int choice=getValidChoice(4,false);
-		Type wantedMaterial=null;
-		switch(choice){
-		case 1:
-			wantedMaterial=Type.TABLET;break;
-		case 2:
-			wantedMaterial=Type.PHONE;break;
-		case 3:
-			wantedMaterial=Type.HEADPHONE;break;
-		case 4:
-			wantedMaterial=Type.CAMERA;break;
-		case 0:
-			break;
-		}
-		return wantedMaterial;
 	}
 
 	private Date getEndDate() {

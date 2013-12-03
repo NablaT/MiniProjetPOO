@@ -15,10 +15,10 @@ public abstract class Menu {
 	
 	public int getValidChoice(int nbChoix, boolean zeroIsValid){
 		System.out.println("Enter your choice : ");
-		int choice=getInt();
+		int choice=getChoice();
 		while ((choice<(zeroIsValid ? 0:1))||(choice>nbChoix)){
 			System.out.println("Invalid choice, enter your choice : ");
-			choice=getInt();		
+			choice=getChoice();		
 		}
 		return choice;
 	}
@@ -33,7 +33,7 @@ public abstract class Menu {
 		return date;
 	}
 	
-	public int getInt() {
+	public int getChoice() {
 		Scanner sc= new Scanner(System.in);
 		int choix;
 		try{
@@ -58,24 +58,5 @@ public abstract class Menu {
 	
 	public abstract void handleChoice(int Choice);
 	
-	public Stock initializeStock(){
-		HashMap<Integer, ArrayList<Material>> materialInStock=new HashMap<Integer, ArrayList<Material>>();
-		ArrayList<Loan> loansInProgress=new ArrayList<Loan>();
-		
-		Tablet t1=new Tablet();
-		Tablet t2=new Tablet();
-		ArrayList<Material> lt= new ArrayList<Material>();
-		lt.add(t1);
-		lt.add(t2);
-		Headphone h1=new Headphone();
-		ArrayList<Material> lh = new ArrayList<Material>();
-		lh.add(h1);
-		materialInStock.put(1, lh);
-		materialInStock.put(3, lt);
-		
-		Stock s= new Stock(materialInStock,loansInProgress);
-		return s;
-		
-		
-	}
+	
 }

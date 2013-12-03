@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Living.Borrower;
+import Material.Headphone;
 import Material.Material;
+import Material.Tablet;
 
 /**
  * Classe Stock. Un Stock possede une liste des matériels présents dans le
@@ -132,6 +134,24 @@ public class Stock {
 			}
 		}
 		return false;
+	}
+
+	public void initialize(){
+		HashMap<Integer, ArrayList<Material>> materialInStock=new HashMap<Integer, ArrayList<Material>>();
+		
+		Tablet t1=new Tablet();
+		Tablet t2=new Tablet();
+		ArrayList<Material> lt= new ArrayList<Material>();
+		lt.add(t1);
+		lt.add(t2);
+		Headphone h1=new Headphone();
+		ArrayList<Material> lh = new ArrayList<Material>();
+		lh.add(h1);
+		materialInStock.put(1, lh);
+		materialInStock.put(3, lt);
+		
+		this.stock=materialInStock;		
+		
 	}
 
 }
