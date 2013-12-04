@@ -44,6 +44,7 @@ public abstract class Menu {
 	
 	public Date getDate() {
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		format.setLenient(false); 
 		Date date = null;
 		try {
 			date = format.parse(getString());

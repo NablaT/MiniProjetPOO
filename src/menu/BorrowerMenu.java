@@ -42,16 +42,27 @@ public class BorrowerMenu extends Menu {
 
 	public boolean createBorrowing() {
 		Material material=getWantedMaterial();
-		Date beginning=getBeginningDate();
-		Date end=getEndDate();
+		Date beginning,end;
+		do{
+			beginning=getBeginningDate();
+			end=getEndDate();
+		}while (!isWellOrdered(beginning, end));
+		
 		String description = getDescription();
 		Loan l=new Loan(beginning, end, currentUser, description,material);
 		System.out.println("Le prêt de "+material+" pour " +currentUser+ " commence le "+beginning+ " et finit le "+end+"\n raison : "+description+"\n");
 		return stock.makeALoan(l);
 	}
 	
+	private boolean isWellOrdered(Date beginning, Date end) {
+		boolean isOrdered=beginning.before(end);
+		if (!isOrdered)
+			System.out.println("The loan must begin BEFORE the end");
+		return isOrdered;
+	}
+
 	public Material getWantedMaterial() {
-		return new Material (getWantedType(),getWantedOS());
+		return null; // new Material (getWantedType(),getWantedOS());
 	}
 
 	private Type getWantedType() {
