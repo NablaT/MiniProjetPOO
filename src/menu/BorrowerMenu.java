@@ -51,10 +51,7 @@ public class BorrowerMenu extends Menu {
 	}
 	
 	public Material getWantedMaterial() {
-		Type wantedType=getWantedType();
-		OperatingSystem wantedOS=getWantedOS();
-		Material wantedMaterial = null;
-		return wantedMaterial;
+		return new Material (getWantedType(),getWantedOS());
 	}
 
 	private Type getWantedType() {
