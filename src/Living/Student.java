@@ -24,7 +24,23 @@ public class Student extends Borrower {
 	public static int getNumberOfStudent() {
 		return numberOfStudent;
 	}
-
+	
+	/**
+	 * Methode getType. Cette methode retourne le "Student" ce qui correspond au type d'un Student. 
+	 */
+	@Override
+	public String getType(){
+		return super.type; 
+	}
+	
+	/**
+	 * Methode setType. Cette methode remplace le type du student par celui specifié en parametre. Cette methode
+	 * a ete creee pour les tests JUnit. 
+	 */
+	@Override
+	public void setType(String type){
+		this.type=type;
+	}
 	/**
 	 * Methode setNumberOfStudent. Cette methode remplace le nombre de Student.
 	 * @param numberOfStudent

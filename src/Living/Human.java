@@ -76,6 +76,14 @@ public abstract class Human {
 		this.id=id;
 	}
 	
+	/**
+	 * Methode setType. Cette methode remplace le type de l'humain par celui specifié en parametre. 
+	 * @param type
+	 */
+	
+	public void setType(String type){
+		this.type=type;
+	}
 	
 	/**
 	 * Methode setNumberOfHuman. Cette methode remplace le nombre de Human.

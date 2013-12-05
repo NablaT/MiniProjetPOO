@@ -2,23 +2,79 @@ package Stock;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import Living.Manager;
+import Living.Student;
+import Living.Teacher;
+import Material.Camera;
+import Material.Headphone;
+import Material.Material;
+import Material.Phone;
+import Material.Tablet;
+
 public class StockManagementTest {
 
+	private StockManagement mstock;
+	private Stock stock;
+	private HashMap<Integer, ArrayList<Material>> list;
+	private ArrayList<Loan> loans;
+	private ArrayList<Material> hp;
+	private ArrayList<Material> tab;
+	
 	@Before
 	public void setUp() throws Exception {
+		this.list = new HashMap<Integer, ArrayList<Material>>();
+		this.hp = new ArrayList<Material>();
+		this.tab = new ArrayList<Material>();
+		for (int i = 0; i < 2; i++) {
+			this.hp.add(new Headphone());
+			this.tab.add(new Tablet());
+		}
+		list.put(1,this.hp);
+		list.put(3,this.tab);
+		list.put(0,new ArrayList<Material>());
+		list.put(2,new ArrayList<Material>());
+
+		
+		this.loans = new ArrayList<Loan>();
+		for (int i = 0; i < 4; i++) {
+			Calendar c= Calendar.getInstance();
+			c.set(2013, 02, 32, 15,13+i);
+
+			Calendar c2= Calendar.getInstance();
+			c.set(2013, 02, 32, 15+i,13);
+			if(i<2){
+				this.loans.add(new Loan(c, c2,new Teacher("Jean" + i),
+						"Emprunt pour " + i + " jours",new Phone()));
+			}
+			else{
+				this.loans.add(new Loan(c, c2,new Teacher("Jean" + i),
+						"Emprunt pour " + i + " jours",new Camera()));
+			}	
+		}
+		this.stock = new Stock(this.list);
+		this.mstock=new StockManagement(this.loans, this.stock);
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		this.mstock=new StockManagement(this.loans, this.stock);
+		for(int i=0;i<4;i++){
+			//assertEquals(this.mstock.getLoans().get(i).)
+			//TODO
+		}
 	}
 
 	@Test
 	public void testStockManagement() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
@@ -48,22 +104,69 @@ public class StockManagementTest {
 
 	@Test
 	public void testMakeALoan() {
-		fail("Not yet implemented");
+		Calendar dateLoan= Calendar.getInstance();
+		Calendar dateBack= Calendar.getInstance();
+		Teacher teacher= new Teacher("Pierre");
+		String description= "Je veux reserver cette tablette pour mon cours";
+		Tablet material= new Tablet(); 
+		Loan loan= new Loan(dateLoan, dateBack, teacher, description, material);
+		assertEquals(this.mstock.makeALoan(loan), true); 
+		
+		
 	}
 
 	@Test
 	public void testAskForALoan() {
-		fail("Not yet implemented");
+		Teacher teacher= new Teacher("Pierre");
+		Student student= new Student("Luc");
+		
+		assertEquals(this.mstock.askForALoan(teacher),true);
+		assertEquals(this.mstock.askForALoan(student),true);
+		student.setType("visiteur");
+		assertEquals(this.mstock.askForALoan(student),false);
+	
 	}
 
 	@Test
 	public void testAskForAStudent() {
-		fail("Not yet implemented");
+		Student s= new Student("Luc");
+		Student s2= new Student("Carl");
+		Phone p= new Phone();
+
+		Calendar c= Calendar.getInstance();
+		c.set(2013, 02, 32, 15,13);
+
+		Calendar c2= Calendar.getInstance();
+		c.set(2013, 02, 32, 16,13);
+		
+		Loan l= new Loan(c, c2, s, "ici description", p);
+		
+		this.mstock.getLoans().add(l);
+		
+		assertEquals(this.mstock.askForAStudent(s),false);
+		assertEquals(this.mstock.askForAStudent(s2),true);
 	}
 
 	@Test
 	public void testAskForATeacher() {
-		fail("Not yet implemented");
+		Teacher t= new Teacher("Pierre");
+		Teacher t2= new Teacher("Thomas");
+		Phone p= new Phone();
+
+		Calendar c= Calendar.getInstance();
+		c.set(2013, 02, 32, 15,13);
+
+		Calendar c2= Calendar.getInstance();
+		c.set(2013, 02, 32, 16,13);
+		
+		Loan l= new Loan(c, c2, t, "ici description", p);
+		Loan l2= new Loan(c, c2, t, "ici description", p);
+		
+		this.mstock.getLoans().add(l);
+		this.mstock.getLoans().add(l2);
+	
+		assertEquals(this.mstock.askForATeacher(t),false);
+		assertEquals(this.mstock.askForATeacher(t2),true);
 	}
 
 }

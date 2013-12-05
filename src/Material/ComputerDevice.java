@@ -2,7 +2,7 @@ package Material;
 
 public abstract class ComputerDevice extends Material {
 
-	private OperatingSystem typeOS;
+	protected OperatingSystem typeOS;
 
 	/**
 	 * Methode getTypeOS. Cette methode retourne le type d'OS du matériel.
@@ -13,6 +13,7 @@ public abstract class ComputerDevice extends Material {
 	public OperatingSystem getTypeOS() {
 		return this.typeOS;
 	}
+	
 
 	/**
 	 * Methode setTypeOS. Cette methode permet de remplacer le type d'OS du

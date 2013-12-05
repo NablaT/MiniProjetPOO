@@ -10,8 +10,8 @@ import Material.Tablet;
 
 /**
  * Classe Stock. Un Stock possede une liste des matériels présents dans le
- * stock. L'hashmap est construise de la façon suivante: <1, Liste de Camera>
- * <2, Liste de HeadPhone> <3, Liste de Phone> <4, Liste de Tablet> Pour tout
+ * stock. L'hashmap est construise de la façon suivante: <0, Liste de Camera>
+ * <1, Liste de HeadPhone> <2, Liste de Phone> <3, Liste de Tablet> Pour tout
  * nouveau matériel créé, il sera ajouté à la suite de l'hasmap.
  */
 
@@ -25,8 +25,7 @@ public class Stock {
 	 * @param stock
 	 */
 
-	public Stock(HashMap<Integer, ArrayList<Material>> stock,
-			ArrayList<Loan> loans) {
+	public Stock(HashMap<Integer, ArrayList<Material>> stock) {
 		this.stock = stock;
 	}
 
@@ -40,6 +39,7 @@ public class Stock {
 	public HashMap<Integer, ArrayList<Material>> getStock() {
 		return this.stock;
 	}
+	
 
 	/**
 	 * Methode setStock. Cette methode remplace l'hasmap correspondant à la
@@ -64,13 +64,27 @@ public class Stock {
 	public boolean isInStock(Material m) {
 		switch (m.getType()) {
 		case "Camera":
-			return search(this.stock.get(0), m);
-		case "Headphone":
-			return search(this.stock.get(1), m);
+			if (this.stock.get(0) != null) {
+				return search(this.stock.get(0), m);
+			}
+			break;
+		case "HeadPhone":
+
+			if (this.stock.get(1) != null) {
+				return search(this.stock.get(1), m);
+			}
+			break;
 		case "Phone":
-			return search(this.stock.get(2), m);
+			if (this.stock.get(2) != null) {
+				return search(this.stock.get(2), m);
+			}
+			break;
+
 		case "Tablet":
-			return search(this.stock.get(3), m);
+			if (this.stock.get(3) != null) {
+				return search(this.stock.get(3), m);
+			}
+			break;
 		}
 		return false;
 	}
@@ -106,13 +120,25 @@ public class Stock {
 	public boolean removeMaterial(Material material) {
 		switch (material.getType()) {
 		case "Camera":
-			return remove(this.stock.get(0), material);
-		case "Headphone":
-			return remove(this.stock.get(0), material);
+			if (this.stock.get(0) != null) {
+				return remove(this.stock.get(0), material);
+			}
+			break;
+		case "HeadPhone":
+			if (this.stock.get(1) != null) {
+				return remove(this.stock.get(1), material);
+			}
+			break;
 		case "Phone":
-			return remove(this.stock.get(0), material);
+			if (this.stock.get(2) != null) {
+				return remove(this.stock.get(2), material);
+			}
+			break;
 		case "Tablet":
-			return remove(this.stock.get(0), material);
+			if (this.stock.get(3) != null) {
+				return remove(this.stock.get(3), material);
+			}
+			break;
 		}
 		return false;
 	}
@@ -136,22 +162,22 @@ public class Stock {
 		return false;
 	}
 
-	public void initialize(){
-		HashMap<Integer, ArrayList<Material>> materialInStock=new HashMap<Integer, ArrayList<Material>>();
-		
-		Tablet t1=new Tablet();
-		Tablet t2=new Tablet();
-		ArrayList<Material> lt= new ArrayList<Material>();
+	public void initialize() {
+		HashMap<Integer, ArrayList<Material>> materialInStock = new HashMap<Integer, ArrayList<Material>>();
+
+		Tablet t1 = new Tablet();
+		Tablet t2 = new Tablet();
+		ArrayList<Material> lt = new ArrayList<Material>();
 		lt.add(t1);
 		lt.add(t2);
-		Headphone h1=new Headphone();
+		Headphone h1 = new Headphone();
 		ArrayList<Material> lh = new ArrayList<Material>();
 		lh.add(h1);
 		materialInStock.put(1, lh);
 		materialInStock.put(3, lt);
-		
-		this.stock=materialInStock;		
-		
+
+		this.stock = materialInStock;
+
 	}
 
 }

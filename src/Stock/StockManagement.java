@@ -2,12 +2,14 @@ package Stock;
 
 import java.util.ArrayList;
 import Living.Borrower;
+import Living.Teacher;
 import Material.Material;
 
 public class StockManagement {
 
 	private Stock stock;
 	private ArrayList<Loan> loans;
+	
 
 	/**
 	 * Constructeur de la classe Stock.
@@ -22,16 +24,6 @@ public class StockManagement {
 	}
 
 	/**
-	 * Methode getBorrowers. Cette methode renvoie la liste des emprunts.
-	 * 
-	 * @return
-	 */
-
-	public ArrayList<Loan> getBorrowers() {
-		return this.loans;
-	}
-
-	/**
 	 * Methode getStock. Cette methode retourne le stock.
 	 * 
 	 * @return
@@ -39,6 +31,15 @@ public class StockManagement {
 
 	public Stock getStock() {
 		return this.stock;
+	}
+	
+	/**
+	 * Methode getLoans. Cette methode retourne la liste des loans. 
+	 * @return
+	 */
+	
+	public ArrayList<Loan> getLoans(){
+		return this.loans; 
 	}
 
 	/**
@@ -82,15 +83,23 @@ public class StockManagement {
 	 */
 
 	public boolean makeALoan(Loan loan) {
-		System.out.println(loan.getMaterial());	
 		if (this.stock.isInStock(loan.getMaterial())
 				&& askForALoan(loan.getBorrower())) {
-			System.out.println("true");	
 			this.loans.add(loan);
 			this.stock.removeMaterial(loan.getMaterial());
 			return true;
 		}
 		return false;
+	}
+	
+	/*
+	public Loan getLoan(Borrower b){
+		return new Loan();
+	}
+	*/
+	
+	public boolean returnLoan(Loan loan){
+		return true; 
 	}
 
 	/**
@@ -106,7 +115,6 @@ public class StockManagement {
 		} else if (borrower.getType().equals("Teacher")) {
 			return askForATeacher(borrower);
 		}
-
 		return false;
 	}
 	
@@ -128,14 +136,23 @@ public class StockManagement {
 
 	/**
 	 * Methode AskForATeacher. Cette methode verifie si le teacher en question est autorisé à faire un emprunt. Un 
-	 * teacher peut faire plusieurs emprunts. 
+	 * teacher peut faire plusieurs emprunts mais il est limité par un nombre max d'emprunt. 
 	 * @param teacher
 	 * @return
 	 */
+	
 	public boolean askForATeacher(Borrower teacher) {
+		int cptNbrOfLoans=0;
+		//System.out.println(Teacher.getNumberOfLoans());
 		for (int i = 0; i < this.loans.size(); i++) {
+			System.out.println(cptNbrOfLoans);
 			if(this.loans.get(i).getBorrower().equals(teacher)){
-				
+				if(cptNbrOfLoans < Teacher.getNumberOfLoans()){
+					cptNbrOfLoans++; 
+				}
+				else if(cptNbrOfLoans==Teacher.getNumberOfLoans()){
+					return false; 
+				}				
 			}
 		}
 		return true;

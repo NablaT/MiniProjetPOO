@@ -11,14 +11,25 @@ public class Tablet extends ComputerDevice{
 	private static int numberOfTablet;
 	
 	/**
-	 * Constructeur classe Tablet.
+	 * Constructeur par default classe Tablet.
 	 */
 	
 	public Tablet(){
 		type=Type.TABLET;
+		super.typeOS=OperatingSystem.ANDROID;
 		numberOfTablet++;
 	}
 	
+	/**
+	 * Constructeur de la classe Tablet. Ce constructeur prend en parametre un OperatingSysteme. 
+	 * @param op
+	 */
+	
+	public Tablet(OperatingSystem op){
+		this.type=Type.TABLET;
+		super.typeOS=op;
+		numberOfTablet++;
+	}
 	/**
 	 * Accesseur getNumberOfTablet. Cette methode retourne le nombre total de Tablet existant. 
 	 * @return

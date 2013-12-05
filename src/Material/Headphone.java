@@ -41,4 +41,8 @@ public class Headphone extends Material {
 	public static void setNumberOfHeadphone(int number){
 		numberOfHeadphones=number;
 	}
+	
+	public boolean equals(Headphone hp){
+		return (this.type.equals(hp));
+	}
 }

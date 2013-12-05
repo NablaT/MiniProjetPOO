@@ -15,11 +15,23 @@ public class Phone extends ComputerDevice {
 	private static int numberOfPhones;
 	
 	/**
+	 * Constructeur par default de phone. 
+	 */
+	
+	
+	public Phone(){
+		super.type=Type.PHONE;
+		super.typeOS = OperatingSystem.ANDROID; 
+		//id="PHO"+String.valueOf(numberOfPhones);
+		numberOfPhones++;
+	}
+	/**
 	 * Constructeur de Phone.
 	 * 
 	 */
-	public Phone(){
+	public Phone(OperatingSystem op){
 		type=Type.PHONE;
+		super.typeOS=op; 
 		//id="PHO"+String.valueOf(numberOfPhones);
 		numberOfPhones++;
 	}

@@ -28,7 +28,6 @@ public abstract class Material {
 	public String getId(){
 		return this.id;
 	}
-
 	
 	
 	/**
@@ -39,6 +38,6 @@ public abstract class Material {
 	 */
 	
 	public boolean equals(Material m){
-		return (this.type.equals(m.getType()));
+		return (this.type.toString().equals(m.getType()));
 	}
 }

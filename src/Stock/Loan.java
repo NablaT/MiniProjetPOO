@@ -1,5 +1,6 @@
 package Stock;
 
+import java.util.Calendar;
 import java.util.Date;
 import Living.Borrower;
 import Material.Material;
@@ -14,8 +15,8 @@ import Material.Type;
 
 public class Loan {
 
-	private Date dateLoan;
-	private Date dateBack;
+	private Calendar dateLoan;
+	private Calendar dateBack;
 	private Borrower borrower; 
 	private Material material;
 	private String description;
@@ -29,7 +30,7 @@ public class Loan {
 	 * @param description
 	 * @param material
 	 */
-	public Loan(Date dateLoan, Date dateBack, Borrower borrower, String description, Material material){
+	public Loan(Calendar dateLoan, Calendar dateBack, Borrower borrower, String description, Material material){
 		this.dateLoan=dateLoan;
 		this.dateBack=dateBack;
 		this.borrower=borrower;
@@ -41,7 +42,7 @@ public class Loan {
 	 * Methode getDateLoan. Cette methode retourne la date à laquelle l'emprunt a été fait.
 	 * @return
 	 */
-	public Date getDateLoan(){
+	public Calendar getDateLoan(){
 		return this.dateLoan;
 	}
 	
@@ -50,7 +51,7 @@ public class Loan {
 	 * @return
 	 */
 	
-	public Date getDateBack(){
+	public Calendar getDateBack(){
 		return this.dateBack;
 	}
 	
@@ -86,7 +87,7 @@ public class Loan {
 	 * @param dateLoan
 	 */
 	
-	public void setDateLoan(Date dateLoan){
+	public void setDateLoan(Calendar dateLoan){
 		this.dateLoan=dateLoan;
 	}
 	
@@ -95,7 +96,7 @@ public class Loan {
 	 * @param dateBack
 	 */
 	
-	public void setDateBack(Date dateBack){
+	public void setDateBack(Calendar dateBack){
 		this.dateBack=dateBack;
 	}
 	
