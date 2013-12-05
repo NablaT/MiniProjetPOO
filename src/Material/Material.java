@@ -6,7 +6,7 @@ package Material;
  * 
  */
 
-public abstract class Material {
+public class Material {
 
 	protected Type type;
 	protected String id;

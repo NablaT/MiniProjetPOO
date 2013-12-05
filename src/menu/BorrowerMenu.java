@@ -1,21 +1,17 @@
 package menu;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+//import java.util.Date;
 import java.util.Scanner;
+
+import Date.Date;
 import Living.*;
 import Material.*;
 import Stock.*;
 
 public class BorrowerMenu extends Menu {
-
-	@Override
-	public void handleChoice(int Choice) {
-		// TODO Auto-generated method stub
-		
-	}
 	
-	/*
+
 	private Borrower currentUser=new Student("");
 	
 	public BorrowerMenu(){
@@ -108,6 +104,6 @@ public class BorrowerMenu extends Menu {
 		System.out.println("Beginning of the borrowing ?");
 		return getValidDate();
 
-	}*/
+	}
 
 }

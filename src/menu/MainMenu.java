@@ -12,7 +12,7 @@ public class MainMenu extends Menu{
 	public MainMenu(){
 		int choice;
 		nbChoices=2;
-		Stock s=new Stock(null,null);
+		Stock s=new Stock(null);
 		s.initialize();
 		stock=new StockManagement(null,s);
 		do{

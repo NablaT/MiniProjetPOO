@@ -143,18 +143,18 @@ public class StockManagement {
 	
 	public boolean askForATeacher(Borrower teacher) {
 		int cptNbrOfLoans=0;
-		//System.out.println(Teacher.getNumberOfLoans());
 		for (int i = 0; i < this.loans.size(); i++) {
-			System.out.println(cptNbrOfLoans);
 			if(this.loans.get(i).getBorrower().equals(teacher)){
 				if(cptNbrOfLoans < Teacher.getNumberOfLoans()){
 					cptNbrOfLoans++; 
+					if(cptNbrOfLoans==Teacher.getNumberOfLoans()){
+						return false; 
+					}
 				}
-				else if(cptNbrOfLoans==Teacher.getNumberOfLoans()){
-					return false; 
-				}				
+
 			}
 		}
+		System.out.println();
 		return true;
 	}
 	

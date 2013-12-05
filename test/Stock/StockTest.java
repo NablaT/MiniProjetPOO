@@ -3,15 +3,13 @@ package Stock;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import Living.Borrower;
+import Date.Date;
 import Living.Teacher;
 import Material.Camera;
 import Material.Headphone;
@@ -44,20 +42,15 @@ public class StockTest {
 		
 		this.loans = new ArrayList<Loan>();
 		for (int i = 0; i < 4; i++) {
-			Calendar c= Calendar.getInstance();
-			c.set(2013, 02, 32, 15,13+i);
-
-			Calendar c2= Calendar.getInstance();
-			c.set(2013, 02, 32, 15+i,13);
-			if(i<2){
-				this.loans.add(new Loan(c, c2,new Teacher("Jean" + i),
-						"Emprunt pour " + i + " jours",new Phone()));
-				
+			Date d = new Date(2013, 2, 2, 2, 2 + i);
+			Date d2 = new Date(2013, 02, 20, 15 + i, 13);
+			if (i < 2) {
+				this.loans.add(new Loan(d, d2, new Teacher("Jean" + i),
+						"Emprunt pour " + i + " jours", new Phone()));
+			} else {
+				this.loans.add(new Loan(d, d2, new Teacher("Jean" + i),
+						"Emprunt pour " + i + " jours", new Camera()));
 			}
-			else{
-				this.loans.add(new Loan(c, c2,new Teacher("Jean" + i),
-						"Emprunt pour " + i + " jours",new Camera()));
-			}	
 		}
 		
 		this.stock = new Stock(this.list);
