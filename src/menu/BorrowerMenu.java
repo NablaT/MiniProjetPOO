@@ -9,11 +9,24 @@ import Living.*;
 import Material.*;
 import Stock.*;
 
+/**
+ * Menu utilisé lorsqu'un Borrower veut utiliser l'application, 
+ * il lui permet de réserver un objet, 
+ * de rendre un objet ou encore de consulter ses informations.
+ * @author tom
+ *
+ */
+
 public class BorrowerMenu extends Menu {
 	
 
 	private Borrower currentUser=new Student("");
 	
+	
+	/**
+	 * Un nouveau BorrowerMenu affiche les possibilités et prend le choix de l'utilisateur,
+	 * il traite ensuite ce choix, et redemande à l'utilisateur ce qu'il souhaite faire.
+	 */
 	public BorrowerMenu(){
 		int choice;
 		nbChoices=4;
@@ -23,11 +36,18 @@ public class BorrowerMenu extends Menu {
 			handleChoice(choice);
 		}while(choice!=0);
 	}
-
+	
+	/**
+	 * Méthode affichant le premier menu d'un Borrower.
+	 */
 	public void displayBorrowerMenu() {
 		System.out.println("What do you want to do ?\n 	1-Borrow an object\n	2-return an object\n	3-See your informations\n	0-Quit");
 	}
 
+	
+	/**
+	 * Méthode gérant le choix entré par l'utilisateur, elle fait appelle aux fonctions correspondante, et affiche le résultat de l'opération.
+	 */
 	@Override
 	public void handleChoice(int choice) {
 		switch(choice){
@@ -35,7 +55,8 @@ public class BorrowerMenu extends Menu {
 			if (createBorrowing())System.out.println("Request sent");
 			else System.out.println("You can't borrow that !") ;break;
 		case 2 :
-			System.out.println("Unavailble functionality");break;
+			if (getBackObject()) System.out.println("return done !");
+			else System.out.println("you can't do it");break;
 		case 3 :
 			System.out.println("Unavailble functionality");break;
 		case 0 : break;
@@ -43,20 +64,59 @@ public class BorrowerMenu extends Menu {
 		
 	}
 
+	private boolean getBackObject() {
+		String idMaterial=getString();
+				
+		return false;
+	}
+	
+	/**
+	 * Fonction qui crée un nouveau Loan, à partir de données entrées par l'utilisateur,
+	 * Renvoie true si le Loan à bien été créé, false sinon.
+	 * @return
+	 */
 	public boolean createBorrowing() {
 		Material material=getWantedMaterial();
-		Date beginning=getBeginningDate();
-		Date end=getEndDate();
+		Date beginning,end;
+		do{
+			beginning=getBeginningDate();
+			end=getEndDate();
+		}while (!isWellOrdered(beginning, end));
+		
 		String description = getDescription();
 		Loan l=new Loan(beginning, end, currentUser, description,material);
-		System.out.println("Le prêt de "+material+" pour " +currentUser+ " commence le "+beginning+ " et finit le "+end+"\n raison : "+description+"\n");
 		return stock.makeALoan(l);
 	}
 	
+	/**
+	 * Fonction qui vérifie que la date de début d'emprunt est bien située avant la date de fin.
+	 * 
+	 * @param beginning
+	 * @param end
+	 * @return
+	 */
+	private boolean isWellOrdered(Date beginning, Date end) {
+		boolean isOrdered=beginning.before(end);
+		if (!isOrdered)
+			System.out.println("The loan must begin BEFORE the end");
+		return isOrdered;
+	}
+
+	/**
+	 * Fonction renvoyant un material correspondant à ce que l'utilisateur souhaite.
+	 * 
+	 * @return
+	 */
 	public Material getWantedMaterial() {
 		return new Material (getWantedType(),getWantedOS());
 	}
 
+	/**
+	 * getWantedType demande à l'utilisateur le Type de Material qu'il veut,
+	 * et renvoie le Type en question. 
+	 * 
+	 * @return
+	 */	
 	private Type getWantedType() {
 		System.out.println("Wich kind of material do you need ?\n	1-Tablet\n	2-Phone\n	3-Headphone\n	4-Camera");
 		int choice=getValidChoice(4,false);
@@ -74,6 +134,13 @@ public class BorrowerMenu extends Menu {
 		return wantedType;
 	}
 	
+	
+	/**
+	 * getWantedOS demande à l'utilisateur l'OS qu'il veut pour son ComputerDevice,
+	 * et renvoie l'OperatingSystem en question. 
+	 * 
+	 * @return
+	 */
 	public OperatingSystem getWantedOS(){
 		System.out.println("Wich Operating System do you need ?\n	1-Android\n	2-Windows\n	3-Ios\n");
 		int choice=getValidChoice(3,false);
@@ -90,16 +157,34 @@ public class BorrowerMenu extends Menu {
 		
 	}
 
+	/**
+	 * Fonction qui demande la raison de cet emprunt, et renvoie le String entré par l'utilisateur.
+	 * 
+	 * @return
+	 */
+	
 	private String getDescription() {
 		System.out.println("Why do you need it ?");
 		return getString();
 	}
 
+	
+	/**
+	 * getEndDate ask for a Date end verify that the user input is a correct Date.
+	 * 
+	 * @return
+	 */
 	private Date getEndDate() {
 		System.out.println("End of the Borrowing ?");
 		return getValidDate();
 	}
 
+	
+	/**
+	 * getBeginningDate ask for a Date end verify that the user input is a correct Date.
+	 * 
+	 * @return
+	 */
 	private Date getBeginningDate() {
 		System.out.println("Beginning of the borrowing ?");
 		return getValidDate();
