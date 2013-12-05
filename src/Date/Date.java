@@ -172,7 +172,9 @@ public class Date {
 	}
 
 	/**
-	 * Methode setYear. Cette methode remplace l'année par l'annee specifiee en parametre.
+	 * Methode setYear. Cette methode remplace l'année par l'annee specifiee en
+	 * parametre.
+	 * 
 	 * @param y
 	 */
 	public void setYear(int y) {
@@ -180,7 +182,9 @@ public class Date {
 	}
 
 	/**
-	 * Methode setMonth. Cette methode remplace le mois de l'annee par l'entier placé en parametre.
+	 * Methode setMonth. Cette methode remplace le mois de l'annee par l'entier
+	 * placé en parametre.
+	 * 
 	 * @param m
 	 */
 	public void setMonth(int m) {
@@ -188,15 +192,19 @@ public class Date {
 	}
 
 	/**
-	 * Methode setDay. Cette methode remplace le jour par l'entier specifié en parametre.
+	 * Methode setDay. Cette methode remplace le jour par l'entier specifié en
+	 * parametre.
+	 * 
 	 * @param d
 	 */
 	public void setDay(int d) {
 		this.day = d;
 	}
-	
+
 	/**
-	 * Methode setHour. Cette methode remplace l'heure par l'heure specifiee en parametre.
+	 * Methode setHour. Cette methode remplace l'heure par l'heure specifiee en
+	 * parametre.
+	 * 
 	 * @param h
 	 */
 
@@ -205,10 +213,18 @@ public class Date {
 	}
 
 	/**
-	 * Methode setMinute. Cette methode remplace les minutes par l'entier specifie en parametre. 
+	 * Methode setMinute. Cette methode remplace les minutes par l'entier
+	 * specifie en parametre.
+	 * 
 	 * @param m
 	 */
 	public void setMinute(int m) {
 		this.minute = m;
+	}
+
+	public boolean equals(Date d) {
+		return (this.year == d.getYear() && this.month == d.getMonth()
+				&& this.day == d.getDay() && this.hour == d.getHour() && this.minute == d
+					.getMinute());
 	}
 }

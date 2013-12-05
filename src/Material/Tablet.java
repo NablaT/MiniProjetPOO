@@ -17,6 +17,7 @@ public class Tablet extends ComputerDevice{
 	public Tablet(){
 		type=Type.TABLET;
 		super.typeOS=OperatingSystem.ANDROID;
+		super.id="TAB"+String.valueOf(numberOfTablet);
 		numberOfTablet++;
 	}
 	

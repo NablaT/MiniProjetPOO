@@ -9,7 +9,6 @@ public class StockManagement {
 
 	private Stock stock;
 	private ArrayList<Loan> loans;
-	
 
 	/**
 	 * Constructeur de la classe Stock.
@@ -32,14 +31,15 @@ public class StockManagement {
 	public Stock getStock() {
 		return this.stock;
 	}
-	
+
 	/**
-	 * Methode getLoans. Cette methode retourne la liste des loans. 
+	 * Methode getLoans. Cette methode retourne la liste des loans.
+	 * 
 	 * @return
 	 */
-	
-	public ArrayList<Loan> getLoans(){
-		return this.loans; 
+
+	public ArrayList<Loan> getLoans() {
+		return this.loans;
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class StockManagement {
 
 	public void initialize() {
 		this.stock.initialize();
-		this.loans=new ArrayList<Loan>();
+		this.loans = new ArrayList<Loan>();
 	}
 
 	/**
@@ -91,17 +91,65 @@ public class StockManagement {
 		}
 		return false;
 	}
-	
-	/*
-	public Loan getLoan(Borrower b){
-		return new Loan();
-	}
-	*/
-	
-	public boolean returnLoan(Loan loan){
-		return true; 
+
+	/**
+	 * Methode getLoan. Cette methode renvoie le Loan correspondant à
+	 * l'identifiant du Material specfié en parametre.
+	 * 
+	 * @param id
+	 * @return
+	 */
+
+	public Loan getLoan(String id, Borrower borrower) {
+		for (int i = 0; i < this.loans.size(); i++) {
+			if (this.loans.get(i).getMaterial().getId().equals(id)
+					&& this.loans.get(i).getBorrower().equals(borrower)) {
+				return this.loans.get(i);
+			}
+		}
+		return null;
 	}
 
+	/**
+	 * Methode returnLoan. Cette methode permet de rendre un Loan. Si le Loan n'existe pas, elle retourne false. Sinon 
+	 * elle remet le materiel dans le stock, enlève le loan de la liste des loans et retourne true,
+	 * @param id
+	 * @param borrower
+	 * @return
+	 */
+	
+	public boolean returnLoan(String id, Borrower borrower) {
+		if (getLoan(id,borrower)!=null) {
+			Loan loan=getLoan(id,borrower); 
+			this.stock.addMaterial(loan.getMaterial());
+			this.loans.remove(indexOfLoan(loan));
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Methode indexOfLoan. Cette methode retourne l'indice auquel c
+	 * @param loan
+	 * @return
+	 */
+
+	public int indexOfLoan(Loan loan) {
+		int index = 0;
+		for(int i=0; i<this.loans.size();i++){
+			if(this.loans.get(index).equals(loan)) break;
+			index++;
+		}
+		return index;
+	}
+/*
+	public boolean loanIsPossible(Loan loan){
+		for(int i=0; i<this.loans.size();i++){
+			
+		}
+		return true; 
+	}*/
+	
 	/**
 	 * Methode askForALoan. Cette methode
 	 * 
@@ -117,17 +165,19 @@ public class StockManagement {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * Methode askForAStudent. Cette methode verifie si le student en question est autorisé a faire un emprunt. Si 
-	 * il a déjà fait un emprunt, sa demande sera refusée. La methode retourne true si il peut emprunter, false sinon.
+	 * Methode askForAStudent. Cette methode verifie si le student en question
+	 * est autorisé a faire un emprunt. Si il a déjà fait un emprunt, sa demande
+	 * sera refusée. La methode retourne true si il peut emprunter, false sinon.
+	 * 
 	 * @param student
 	 * @return
 	 */
 
 	public boolean askForAStudent(Borrower student) {
 		for (int i = 0; i < this.loans.size(); i++) {
-			if(this.loans.get(i).getBorrower().equals(student)){
+			if (this.loans.get(i).getBorrower().equals(student)) {
 				return false;
 			}
 		}
@@ -135,28 +185,27 @@ public class StockManagement {
 	}
 
 	/**
-	 * Methode AskForATeacher. Cette methode verifie si le teacher en question est autorisé à faire un emprunt. Un 
-	 * teacher peut faire plusieurs emprunts mais il est limité par un nombre max d'emprunt. 
+	 * Methode AskForATeacher. Cette methode verifie si le teacher en question
+	 * est autorisé à faire un emprunt. Un teacher peut faire plusieurs emprunts
+	 * mais il est limité par un nombre max d'emprunt.
+	 * 
 	 * @param teacher
 	 * @return
 	 */
-	
+
 	public boolean askForATeacher(Borrower teacher) {
-		int cptNbrOfLoans=0;
+		int cptNbrOfLoans = 0;
 		for (int i = 0; i < this.loans.size(); i++) {
-			if(this.loans.get(i).getBorrower().equals(teacher)){
-				if(cptNbrOfLoans < Teacher.getNumberOfLoans()){
-					cptNbrOfLoans++; 
-					if(cptNbrOfLoans==Teacher.getNumberOfLoans()){
-						return false; 
+			if (this.loans.get(i).getBorrower().equals(teacher)) {
+				if (cptNbrOfLoans < Teacher.getNumberOfLoans()) {
+					cptNbrOfLoans++;
+					if (cptNbrOfLoans == Teacher.getNumberOfLoans()) {
+						return false;
 					}
 				}
-
 			}
 		}
-		System.out.println();
 		return true;
 	}
-	
-	
+
 }

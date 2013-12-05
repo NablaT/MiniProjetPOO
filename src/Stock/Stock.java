@@ -143,6 +143,7 @@ public class Stock {
 		return false;
 	}
 
+	
 	/**
 	 * Methode remove. Cette methode regarde si le materiel est présent dans la
 	 * liste specifiee en parametre et le supprime.
@@ -162,6 +163,47 @@ public class Stock {
 		return false;
 	}
 
+	public void addMaterial(Material m){
+		switch (m.getType()) {
+		case "Camera":
+			if(this.stock.get(0) != null) {
+				this.stock.get(0).add(m);
+			}
+			else{
+				this.stock.put(0, new ArrayList<Material>());
+				this.stock.get(0).add(m);
+			}
+			break;
+		case "HeadPhone":
+			if(this.stock.get(1) != null) {
+				this.stock.get(1).add(m);
+			}
+			else{
+				this.stock.put(1, new ArrayList<Material>());
+				this.stock.get(1).add(m);
+			}
+			break;
+		case "Phone":
+			if(this.stock.get(2) != null) {
+				this.stock.get(2).add(m);
+			}
+			else{
+				this.stock.put(2, new ArrayList<Material>());
+				this.stock.get(2).add(m);
+			}
+			break;
+		case "Tablet":
+			if(this.stock.get(3) != null) {
+				this.stock.get(3).add(m);
+			}
+			else{
+				this.stock.put(3, new ArrayList<Material>());
+				this.stock.get(3).add(m);
+			}
+			break;
+		}
+	}
+	
 	public void initialize() {
 		HashMap<Integer, ArrayList<Material>> materialInStock = new HashMap<Integer, ArrayList<Material>>();
 

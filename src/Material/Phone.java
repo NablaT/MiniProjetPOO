@@ -22,7 +22,7 @@ public class Phone extends ComputerDevice {
 	public Phone(){
 		super.type=Type.PHONE;
 		super.typeOS = OperatingSystem.ANDROID; 
-		//id="PHO"+String.valueOf(numberOfPhones);
+		id="PHO"+String.valueOf(numberOfPhones);
 		numberOfPhones++;
 	}
 	/**

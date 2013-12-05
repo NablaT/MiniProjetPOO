@@ -26,6 +26,8 @@ public class StockManagementTest {
 	private ArrayList<Loan> loans;
 	private ArrayList<Material> hp;
 	private ArrayList<Material> tab;
+	private Teacher teach; 
+	private Phone phone; 
 
 	@Before
 	public void setUp() throws Exception {
@@ -42,10 +44,16 @@ public class StockManagementTest {
 		list.put(2, new ArrayList<Material>());
 
 		this.loans = new ArrayList<Loan>();
+		this.teach= new Teacher ("Pierre");
+		this.phone=new Phone();
 		for (int i = 0; i < 4; i++) {
 			Date d = new Date(2013, 2, 2, 2, 2 + i);
 			Date d2 = new Date(2013, 02, 20, 15 + i, 13);
-			if (i < 2) {
+			if(i==0){
+				this.loans.add(new Loan(d, d2, this.teach,
+						"Emprunt pour " + i + " jours", this.phone));
+			}
+			if (i == 1) {
 				this.loans.add(new Loan(d, d2, new Teacher("Jean" + i),
 						"Emprunt pour " + i + " jours", new Phone()));
 			} else {
@@ -155,4 +163,26 @@ public class StockManagementTest {
 		assertEquals(this.mstock.askForATeacher(t2), true);
 	}
 
+	@Test
+	public void testGetLoan(){
+		assertEquals(this.mstock.getLoan(this.phone.getId(), this.teach),this.loans.get(0));
+		assertEquals(this.mstock.getLoan(this.phone.getId(), new Student("Joe")),null);
+	}
+	
+	@Test
+	public void testReturnLoan(){
+		assertEquals(this.mstock.returnLoan(this.phone.getId(), this.teach),true);
+		assertEquals(this.mstock.returnLoan(this.phone.getId(), new Student("Joe")),false);
+	}
+	
+	
+	@Test
+	public void testIndexOfLoan(){
+		for(int i=0;i<this.mstock.getLoans().size();i++){
+			assertEquals(this.mstock.indexOfLoan(this.loans.get(i)),i);
+		}
+	}
+
+	
+	
 }
