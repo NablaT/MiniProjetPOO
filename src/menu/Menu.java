@@ -2,10 +2,9 @@ package menu;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import Date.Date;
 import java.util.HashMap;
 import java.util.Scanner;
-
 import Material.*;
 import Stock.*;
 
@@ -43,11 +42,9 @@ public abstract class Menu {
 	}
 	
 	public Date getDate() {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		format.setLenient(false); 
-		Date date = null;
+		Date date=null;
 		try {
-			date = format.parse(getString());
+			date = date.parse(getString());
 			} catch (Exception e) {}
 		return date;
 	}

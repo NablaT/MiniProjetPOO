@@ -211,4 +211,36 @@ public class Date {
 	public void setMinute(int m) {
 		this.minute = m;
 	}
+
+	public Date parse(String string) {
+		Date date = null;
+		if ((string.length()==10) && (string.charAt(2)==(string.charAt(5)))){
+			day=Integer.valueOf(string.substring(0, 2));
+			month=Integer.valueOf(string.substring(3,5));
+			year=Integer.valueOf(string.substring(6));
+			date= new Date(day,month,year, 0,0);			
+		}
+		return date;
+	}
+
+	public boolean before(Date end) {
+		boolean isBefore=false;
+		if (this.year<end.getYear())
+			isBefore = true;
+		else if (this.year==end.getYear()){
+			if (this.month<end.getMonth())
+				isBefore = true;
+			else if (this.month==end.getMonth()){
+				if (this.day<end.getDay())
+					isBefore = true;
+				else if (this.day==end.getDay()){
+					if (this.hour<end.getHour())
+						isBefore = true;
+				}
+			}
+		}
+	return isBefore;
+	}
+	
+	
 }

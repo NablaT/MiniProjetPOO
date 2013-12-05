@@ -1,9 +1,7 @@
 package menu;
 
 import java.text.SimpleDateFormat;
-//import java.util.Date;
 import java.util.Scanner;
-
 import Date.Date;
 import Living.*;
 import Material.*;
@@ -108,7 +106,18 @@ public class BorrowerMenu extends Menu {
 	 * @return
 	 */
 	public Material getWantedMaterial() {
-		return new Material (getWantedType(),getWantedOS());
+		
+		switch (getWantedType()){
+		case HEADPHONE:
+			return new Headphone();
+		case CAMERA:
+			return new Camera();
+		case PHONE:
+			return new Phone(getWantedOS());
+		case TABLET:
+			return new Tablet(getWantedOS());
+		default: return null;
+		}
 	}
 
 	/**
