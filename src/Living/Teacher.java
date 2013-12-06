@@ -62,8 +62,8 @@ public class Teacher extends Borrower {
 	 * Methode setNumberOfTeachers. Cette methode remplace le nombre de Teachers.
 	 * @param numberOfTeachers
 	 */
-	public static void setNumberOfStudent(int numberOfTeachers) {
+	/*public static void setNumberOfStudent(int numberOfTeachers) {
 		Teacher.numberOfTeachers = numberOfTeachers;
-	}
+	}*/
 
 }

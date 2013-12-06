@@ -32,7 +32,7 @@ public class Phone extends ComputerDevice {
 	public Phone(OperatingSystem op){
 		type=Type.PHONE;
 		super.typeOS=op; 
-		//id="PHO"+String.valueOf(numberOfPhones);
+		id="PHO"+String.valueOf(numberOfPhones);
 		numberOfPhones++;
 	}
 	
@@ -52,7 +52,6 @@ public class Phone extends ComputerDevice {
 	 */
 	public static void setNumberOfPhone(int number){
 		numberOfPhones=number;
-	}
-	
-	
+	}	
+
 }

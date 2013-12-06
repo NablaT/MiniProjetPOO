@@ -148,16 +148,17 @@ public class Loan {
 	}
 
 	/**
-	 * Methode equals. Cette methode compare deux Loan et retourne true si ils sont identiques.
+	 * Methode equals. Cette methode compare deux Loan et retourne true si ils
+	 * sont identiques.
+	 * 
 	 * @param loan
 	 * @return
 	 */
 	public boolean equals(Loan loan) {
 		return (this.dateLoan.equals(loan.getDateLoan())
-				&& this.dateBack.equals(loan.getDateBack()) && this.material
-					.equals(loan.getMaterial())
-							&& this.borrower.getId().equals(
-									loan.getBorrower().getId())
-							&& this.description.equals(loan.getDescription()));
+				&& this.dateBack.equals(loan.getDateBack())
+				&& this.material.equals(loan.getMaterial())
+				&& this.borrower.getId().equals(loan.getBorrower().getId()) && this.description
+					.equals(loan.getDescription()));
 	}
 }
