@@ -28,7 +28,7 @@ public class BorrowerMenu extends Menu {
 	 */
 	public BorrowerMenu() {
 		int choice;
-		
+
 		nbChoices = 4;
 		currentUser = getCurrentUser();
 		do {
@@ -38,9 +38,15 @@ public class BorrowerMenu extends Menu {
 		} while (choice != 0);
 	}
 
+	/**
+	 * Fonction Permettant à l'utilisateur de s'identifier renvoie le Borrower
+	 * correspondant à l'id mise sur l'input
+	 * 
+	 * @return
+	 */
 	public Borrower getCurrentUser() {
-		Borrower currentUser= null;
-		while (currentUser==null){
+		Borrower currentUser = null;
+		while (currentUser == null) {
 			System.out.println("What is your ID ?");
 			currentUser = Borrower.getBorrower(getString());
 		}
@@ -51,7 +57,8 @@ public class BorrowerMenu extends Menu {
 	 * Méthode affichant le premier menu d'un Borrower.
 	 */
 	public void displayBorrowerMenu() {
-		System.out.println("What do you want to do ?\n 	1-Borrow an object\n	2-return an object\n	3-See your informations\n	0-Quit");
+		System.out
+				.println("What do you want to do ?\n 	1-Borrow an object\n	2-return an object\n	3-See your informations\n	0-Quit");
 	}
 
 	/**
@@ -82,24 +89,35 @@ public class BorrowerMenu extends Menu {
 
 	}
 
+	/**
+	 * Méthode affichant l'utilisateur et ses Loans en cours
+	 */
 	public void printInfo() {
 		System.out.println(currentUser);
 		printUserLoans();
 
-		
 	}
 
-	
+	/**
+	 * Fonction permettant à un Borrower de rendre un objet, renvoie true si
+	 * l'objet à bien été rendu.
+	 * 
+	 * @return
+	 */
 	public boolean getBackObject() {
 		printUserLoans();
-		System.out.println("Please type the id of the object you want to return");
+		System.out
+				.println("Please type the id of the object you want to return");
 		return stock.returnLoan(getString(), currentUser);
 	}
 
+	/**
+	 * Methode affichant les loans en cours pour l'utilisateur courant.
+	 */
 	private void printUserLoans() {
 		System.out.println("Your current Loans are:");
-		for (Loan m : stock.getLoans(currentUser)){
-			System.out.println("	-"+m);
+		for (Loan m : stock.getLoans(currentUser)) {
+			System.out.println("	-" + m);
 		}
 		System.out.println();
 	}
@@ -116,7 +134,7 @@ public class BorrowerMenu extends Menu {
 		do {
 			beginning = getBeginningDate();
 			end = getEndDate();
-		}while (!isWellOrdered(beginning, end));
+		} while (!isWellOrdered(beginning, end));
 
 		String description = getDescription();
 		Loan l = new Loan(beginning, end, currentUser, description, material);
@@ -167,7 +185,8 @@ public class BorrowerMenu extends Menu {
 	 * @return
 	 */
 	public Type getWantedType() {
-		System.out.println("Wich kind of material do you need ?\n	1-Tablet\n	2-Phone\n	3-Headphone\n	4-Camera");
+		System.out
+				.println("Wich kind of material do you need ?\n	1-Tablet\n	2-Phone\n	3-Headphone\n	4-Camera");
 		int choice = getValidChoice(4, false);
 		Type wantedType = null;
 		switch (choice) {
@@ -194,7 +213,8 @@ public class BorrowerMenu extends Menu {
 	 * @return
 	 */
 	public OperatingSystem getWantedOS() {
-		System.out.println("Wich Operating System do you need ?\n	1-Android\n	2-Windows\n	3-Ios\n");
+		System.out
+				.println("Wich Operating System do you need ?\n	1-Android\n	2-Windows\n	3-Ios\n");
 		int choice = getValidChoice(3, false);
 		OperatingSystem wantedOS = null;
 		switch (choice) {

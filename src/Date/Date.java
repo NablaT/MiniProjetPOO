@@ -225,44 +225,72 @@ public class Date {
 		this.minute = m;
 	}
 
+	/**
+	 * Fonction comparant 2 dates, renvoie true si les 2 dates sont identiques à
+	 * la minute près.
+	 * 
+	 * @param d
+	 * @return
+	 */
 	public boolean equals(Date d) {
 		return (this.year == d.getYear() && this.month == d.getMonth()
 				&& this.day == d.getDay() && this.hour == d.getHour() && this.minute == d
 					.getMinute());
 	}
 
+	/**
+	 * Fonction parsant un String de la forme "dd/MM/YYYY". parse renvoie la
+	 * date correspondante avec les heures et les minutes à 0 si le String et de
+	 * la bonne forme, sinon, parse renvoie la valeur null.
+	 * 
+	 * @param string
+	 * @return
+	 */
 	public Date parse(String string) {
 		Date date = null;
-		if ((string.length()==10) && (string.charAt(2)=='/') && (string.charAt(5)=='/')){
-			day=Integer.valueOf(string.substring(0, 2));
-			month=Integer.valueOf(string.substring(3,5));
-			year=Integer.valueOf(string.substring(6));
-			date= new Date(year,month,day, 0,0);			
+		if ((string.length() == 10) && (string.charAt(2) == '/')
+				&& (string.charAt(5) == '/')) {
+			day = Integer.valueOf(string.substring(0, 2));
+			month = Integer.valueOf(string.substring(3, 5));
+			year = Integer.valueOf(string.substring(6));
+			date = new Date(year, month, day, 0, 0);
 		}
 		return date;
 	}
 
+	/**
+	 * Fonction comparant 2 dates. renvoie true si la date passée en paramètre
+	 * est posterieure à this, et false si la date passée en ragument est
+	 * anterieure ou égale à this.
+	 * 
+	 * @param end
+	 * @return
+	 */
 	public boolean before(Date end) {
-		boolean isBefore=false;
-		if (this.year<end.getYear())
+		boolean isBefore = false;
+		if (this.year < end.getYear())
 			isBefore = true;
-		else if (this.year==end.getYear()){
-			if (this.month<end.getMonth())
+		else if (this.year == end.getYear()) {
+			if (this.month < end.getMonth())
 				isBefore = true;
-			else if (this.month==end.getMonth()){
-				if (this.day<end.getDay())
+			else if (this.month == end.getMonth()) {
+				if (this.day < end.getDay())
 					isBefore = true;
-				else if (this.day==end.getDay()){
-					if (this.hour<end.getHour())
+				else if (this.day == end.getDay()) {
+					if (this.hour < end.getHour())
 						isBefore = true;
 				}
 			}
 		}
-	return isBefore;
+		return isBefore;
 	}
-	
-	public String toString(){
-		return day+"/"+month+"/"+year+ "  "+hour+":"+minute;
+
+	/**
+	 * Fonction toString d'une date renvoie un String de la forme "dd/MM/YYYY
+	 * h:m
+	 */
+	public String toString() {
+		return day + "/" + month + "/" + year + "  " + hour + ":" + minute;
 	}
-	
+
 }

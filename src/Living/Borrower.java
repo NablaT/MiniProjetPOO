@@ -11,8 +11,8 @@ import Stock.DemoStock;
 
 public abstract class Borrower extends Human {
 
-	private static int numberOfBorrower=0;
-	private static ArrayList<Borrower> borrowersList= new ArrayList<Borrower>();
+	private static int numberOfBorrower = 0;
+	private static ArrayList<Borrower> borrowersList = new ArrayList<Borrower>();
 
 	/**
 	 * Constructeur de la classe Borrower. Ce constructeur prend en parametre un
@@ -26,7 +26,6 @@ public abstract class Borrower extends Human {
 		numberOfBorrower++;
 		borrowersList.add(this);
 	}
-	
 
 	/**
 	 * Methode getNumberOfBorrowers. Cette methode retourne le nombre de
@@ -38,16 +37,27 @@ public abstract class Borrower extends Human {
 	public static int getNumberOfBorrowers() {
 		return numberOfBorrower;
 	}
-	
-	
-	public static ArrayList<Borrower> getBorrowersList(){
+
+	/**
+	 * Fontion renvoyant la liste de tous les Borrowers existants.
+	 * 
+	 * @return
+	 */
+	public static ArrayList<Borrower> getBorrowersList() {
 		return borrowersList;
-		
+
 	}
-	
-	public static Borrower getBorrower(String id){
-		Borrower borrower=null;
-		for (Borrower b : borrowersList){
+
+	/**
+	 * Fonction renvoyant le Borrower correspondant à l'id passé en argument,
+	 * S'il n'éxitse pas, cette fonction renvoie null.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public static Borrower getBorrower(String id) {
+		Borrower borrower = null;
+		for (Borrower b : borrowersList) {
 			if (b.getId().equals(id))
 				borrower = b;
 		}
@@ -66,6 +76,5 @@ public abstract class Borrower extends Human {
 	public boolean equals(Borrower borrower) {
 		return (this.id.equals(borrower.getId()));
 	}
-	
 
 }

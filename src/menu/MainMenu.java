@@ -15,6 +15,10 @@ public class MainMenu extends Menu {
 		sayGoodBye();
 	}
 
+	/**
+	 * Méthode gérant le choix entré par l'utilisateur, elle fait appelle aux
+	 * fonctions correspondante, et affiche le résultat de l'opération.
+	 */
 	@Override
 	public void handleChoice(int choice) {
 		switch (choice) {

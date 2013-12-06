@@ -7,7 +7,7 @@ package Living;
 
 public abstract class Human {
 
-	private static int numberOfHuman=0;
+	private static int numberOfHuman = 0;
 	protected String nom;
 	protected String id;
 	protected String type;
@@ -90,8 +90,13 @@ public abstract class Human {
 	public boolean equals(Human human) {
 		return (this.id.equals(human.getId()));
 	}
-	
-	public String toString(){
-		return this.nom+" (id : "+this.id+")";
+
+	/**
+	 * toString d'un Humain.
+	 * 
+	 * Renvoie un String de la forme "nom (id : x)"
+	 */
+	public String toString() {
+		return this.nom + " (id : " + this.id + ")";
 	}
 }
