@@ -42,6 +42,6 @@ public class Material {
 	}
 	
 	public String toString(){
-		return type.toString()+(id);
+		return type.toString()+" (id : "+(id)+")";
 	}
 }

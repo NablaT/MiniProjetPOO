@@ -84,21 +84,24 @@ public class BorrowerMenu extends Menu {
 
 	public void printInfo() {
 		System.out.println(currentUser);
-		printLoans();
+		printUserLoans();
 
 		
 	}
 
-	private void printLoans() {
-		ArrayList<Loan> userLoans=stock.getLoans(currentUser);
-		for (Loan l : userLoans){
-			System.out.println(l);
-		}
-	}
-
+	
 	public boolean getBackObject() {
-		
+		printUserLoans();
+		System.out.println("Please type the id of the object you want to return");
 		return stock.returnLoan(getString(), currentUser);
+	}
+
+	private void printUserLoans() {
+		System.out.println("Your current Loans are:");
+		for (Loan m : stock.getLoans(currentUser)){
+			System.out.println("	-"+m);
+		}
+		System.out.println();
 	}
 
 	/**

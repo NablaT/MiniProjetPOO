@@ -11,10 +11,8 @@ import Stock.*;
 
 public abstract class Menu {
 	protected int nbChoices;
-	protected StockManagement stock=new DemoStock().getMstock();
-	
-
-	
+	protected static StockManagement stock=new DemoStock().getMstock();
+		
 	public int getValidChoice(int nbChoix, boolean zeroIsValid){
 		System.out.println("Enter your choice : ");
 		int choice=getChoice();
@@ -29,8 +27,8 @@ public abstract class Menu {
 	public Date getValidDate(){
 		System.out.println("Enter a date ('dd/MM/yyyy') : ");
 		Date date=getDate();
-		while (date==null){
-			System.out.println("Invalid format, please retry : ");
+		while (date==null || !(date.isACorrectDate())){
+			System.out.println("Invalid format/Date, please retry : ");
 			date=getDate();		
 		}
 		return date;

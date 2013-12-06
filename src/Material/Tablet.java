@@ -15,10 +15,9 @@ public class Tablet extends ComputerDevice{
 	 */
 	
 	public Tablet(){
-		type=Type.TABLET;
+		super.type=Type.TABLET;
 		super.typeOS=OperatingSystem.ANDROID;
-		id="TAB"+numberOfTablet
-				;
+		id="TAB"+numberOfTablet;
 		numberOfTablet++;
 	}
 	
@@ -31,6 +30,7 @@ public class Tablet extends ComputerDevice{
 		this.type=Type.TABLET;
 		super.typeOS=op;
 		numberOfTablet++;
+		id="TAB"+String.valueOf(numberOfTablet);
 	}
 	/**
 	 * Accesseur getNumberOfTablet. Cette methode retourne le nombre total de Tablet existant. 
