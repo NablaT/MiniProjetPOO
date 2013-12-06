@@ -86,7 +86,7 @@ public class StockManagement {
 		if (this.stock.isInStock(loan.getMaterial())
 				&& askForALoan(loan.getBorrower())) {
 			this.loans.add(loan);
-			this.stock.removeMaterial(loan.getMaterial());
+			// this.stock.removeMaterial(loan.getMaterial());
 			return true;
 		}
 		return false;
@@ -111,45 +111,137 @@ public class StockManagement {
 	}
 
 	/**
-	 * Methode returnLoan. Cette methode permet de rendre un Loan. Si le Loan n'existe pas, elle retourne false. Sinon 
-	 * elle remet le materiel dans le stock, enlève le loan de la liste des loans et retourne true,
+	 * Methode returnLoan. Cette methode permet de rendre un Loan. Si le Loan
+	 * n'existe pas, elle retourne false. Sinon elle remet le materiel dans le
+	 * stock, enlève le loan de la liste des loans et retourne true,
+	 * 
 	 * @param id
 	 * @param borrower
 	 * @return
 	 */
-	
+
 	public boolean returnLoan(String id, Borrower borrower) {
-		if (getLoan(id,borrower)!=null) {
-			Loan loan=getLoan(id,borrower); 
+		if (getLoan(id, borrower) != null) {
+			Loan loan = getLoan(id, borrower);
 			this.stock.addMaterial(loan.getMaterial());
 			this.loans.remove(indexOfLoan(loan));
 			return true;
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Methode indexOfLoan. Cette methode retourne l'indice auquel c
+	 * 
 	 * @param loan
 	 * @return
 	 */
 
 	public int indexOfLoan(Loan loan) {
 		int index = 0;
-		for(int i=0; i<this.loans.size();i++){
-			if(this.loans.get(index).equals(loan)) break;
+		for (int i = 0; i < this.loans.size(); i++) {
+			if (this.loans.get(index).equals(loan))
+				break;
 			index++;
 		}
 		return index;
 	}
-/*
-	public boolean loanIsPossible(Loan loan){
-		for(int i=0; i<this.loans.size();i++){
-			
+
+	/**
+	 * Methode saveBadLoan. Cette methode permet de sauvegarder tous les loans
+	 * qui ne peuvent pas être emprunter.
+	 * 
+	 * @param loan
+	 * @return
+	 */
+
+	public ArrayList<Loan> saveBadsLoan(Loan loan) {
+		ArrayList<Loan> loansNotLoanable = new ArrayList<Loan>();
+		for (int i = 0; i < this.loans.size(); i++) {
+			if (loan.getMaterial().equals(this.loans.get(i).getMaterial())
+					&& (!(this.loans.get(i).getDateBack().before(loan
+							.getDateLoan())) || (loan.getDateLoan().before(
+							this.loans.get(i).getDateLoan()) && loan
+							.getDateBack().before(
+									this.loans.get(i).getDateLoan())))) {
+				loansNotLoanable.add(this.loans.get(i));
+			}
 		}
-		return true; 
-	}*/
-	
+		return loansNotLoanable;
+	}
+
+	public ArrayList<Loan> saveBadLoan(Loan loan) {
+		ArrayList<Loan> loansNotLoanable = new ArrayList<Loan>();
+		for (int i = 0; i < this.loans.size(); i++) {
+			/*
+			 * Si le material est le meme que le materiel du loan
+			 */
+			if (loan.getMaterial().equals(this.loans.get(i).getMaterial())) {
+				/*
+				 * Si la date de debut de loan (celui en parametre de la
+				 * methode) est compris entre la date de debut et la date de fin
+				 * du parametre courant
+				 */
+				if (this.loans.get(i).getDateBack().before(loan.getDateLoan())
+						&& loan.getDateLoan().before(
+								this.loans.get(i).getDateLoan())) {
+					loansNotLoanable.add(this.loans.get(i));
+				}
+				/*
+				 * Si la date de fin du loan (celui en parametre de la methode)
+				 * est compris entre la date de debut et la date de fin du
+				 * parametre courant.
+				 */
+				else if ((this.loans.get(i).getDateLoan()
+						.before(loan.getDateBack()) && loan.getDateBack()
+						.before(this.loans.get(i).getDateBack()))) {
+					loansNotLoanable.add(this.loans.get(i));
+				} 
+			}
+		}
+		return loansNotLoanable;
+	}
+
+	/**
+	 * Methode material isAvalaible. Cette methode vérifie si le Loan courant
+	 * n'appartient pas à la liste save de Loan.
+	 * 
+	 * @param save
+	 * @param current
+	 * @return
+	 */
+	public boolean materialIsAvalaible(ArrayList<Loan> save, Loan current) {
+		for (int i = 0; i < save.size(); i++) {
+			if (save.get(i).equals(current)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Methode giveMeAvalaibleLoan. Cette methode renvoie le premier Loan qui
+	 * est disponible. Elle appelle la methode materialIsAvalaible. On verifie
+	 * pour chaque element de la liste de loan si il fait parti de la liste des
+	 * elements que l'on ne peut pas emprunter. Si ce n'est pas le cas, alors on
+	 * renvoie le Loan.
+	 * 
+	 * @param save
+	 * @return
+	 */
+
+	public Loan giveMeAvailableLoan(ArrayList<Loan> save) {
+		if (save.size() <= this.loans.size()) {
+			for (int i = 0; i < loans.size(); i++) {
+				System.out.println("tour "+i+" "+this.loans.get(i).getDateLoan().getDay());
+				if (materialIsAvalaible(save, this.loans.get(i))) {
+					return this.loans.get(i);
+				}
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * Methode askForALoan. Cette methode
 	 * 
