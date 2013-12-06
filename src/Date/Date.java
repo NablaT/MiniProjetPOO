@@ -230,7 +230,7 @@ public class Date {
 
 	public Date parse(String string) {
 		Date date = null;
-		if ((string.length()==10) && (string.charAt(2)==(string.charAt(5)))){
+		if ((string.length()==10) && (string.charAt(2)=='/') && (string.charAt(5)=='/')){
 			day=Integer.valueOf(string.substring(0, 2));
 			month=Integer.valueOf(string.substring(3,5));
 			year=Integer.valueOf(string.substring(6));
