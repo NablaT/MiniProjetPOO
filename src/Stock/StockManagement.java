@@ -208,4 +208,13 @@ public class StockManagement {
 		return true;
 	}
 
+	public ArrayList<Loan> getLoans(Borrower currentUser) {
+		ArrayList<Loan> userLoans=new ArrayList<Loan>();
+		for (Loan l : loans){
+			if (l.getBorrower().equals(currentUser))
+				userLoans.add(l);
+		}
+		return userLoans;
+	}
+
 }
