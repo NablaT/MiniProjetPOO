@@ -62,14 +62,6 @@ public class StockManagement {
 		this.loans = loans;
 	}
 
-	/**
-	 * Cette methode initialise le stock.
-	 */
-
-	public void initialize() {
-		this.stock.initialize();
-		this.loans = new ArrayList<Loan>();
-	}
 
 	/**
 	 * Methode makeALoan. Cette methode permet de creer un emprunt. Elle verifie
@@ -86,7 +78,6 @@ public class StockManagement {
 		if (this.stock.isInStock(loan.getMaterial())
 				&& askForALoan(loan.getBorrower())) {
 			this.loans.add(loan);
-			// this.stock.removeMaterial(loan.getMaterial());
 			return true;
 		}
 		return false;
