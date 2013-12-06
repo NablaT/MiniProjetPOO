@@ -1,10 +1,11 @@
 package menu;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import Date.Date;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import Living.*;
 import Material.*;
 import Stock.*;
 
@@ -21,6 +22,7 @@ public abstract class Menu {
 		}
 		return choice;
 	}
+	
 	
 	public Date getValidDate(){
 		System.out.println("Enter a date ('dd/MM/yyyy') : ");

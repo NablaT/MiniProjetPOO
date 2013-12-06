@@ -16,9 +16,9 @@ public class Manager extends Human {
 	 */
 	
 	public Manager(String nom) {
-		super.nom=nom;
+		super(nom);
 		super.type="Manager";
-		super.id='m'+this.numberOfManagers+super.nom; 
+		super.id="MAN"+String.valueOf(numberOfManagers); 
 		this.numberOfManagers++;
 	}
 	

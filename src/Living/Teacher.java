@@ -18,10 +18,10 @@ public class Teacher extends Borrower {
 	 * @param nom
 	 */
 	public Teacher(String nom) {
-		super.nom=nom;
-		super.id='t'+this.numberOfTeachers+super.nom; 
-		super.type="Teacher";
-		this.numberOfTeachers++;
+		super(nom);
+		type="Teacher";
+		id="TEA"+String.valueOf(numberOfTeachers); 
+		numberOfTeachers++;
 	}
 	
 	/**
@@ -62,7 +62,10 @@ public class Teacher extends Borrower {
 	 * Methode setNumberOfTeachers. Cette methode remplace le nombre de Teachers.
 	 * @param numberOfTeachers
 	 */
+	
+
 	/*public static void setNumberOfStudent(int numberOfTeachers) {
+>>>>>>> 1a9034f17bee1b347494e787bbf1391e39920296
 		Teacher.numberOfTeachers = numberOfTeachers;
 	}*/
 

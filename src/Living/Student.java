@@ -10,10 +10,10 @@ public class Student extends Borrower {
 	 * @param nom
 	 */
 	public Student(String nom) {
-		super.nom=nom;
-		super.type="Student";
-		super.id='s'+this.numberOfStudent+super.nom;
-		this.numberOfStudent++;
+		super(nom);
+		type="Student";
+		id="STU"+String.valueOf(numberOfStudent);
+		numberOfStudent++;
 	}
 	
 	/**
@@ -48,5 +48,6 @@ public class Student extends Borrower {
 	public static void setNumberOfStudent(int numberOfStudent) {
 		Student.numberOfStudent = numberOfStudent;
 	}
+	
 
 }
