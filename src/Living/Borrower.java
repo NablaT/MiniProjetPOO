@@ -2,6 +2,8 @@ package Living;
 
 import java.util.ArrayList;
 
+import Stock.DemoStock;
+
 /**
  * Classe Borrower. Cette classe hérite de la classe Human.
  * 
@@ -65,10 +67,5 @@ public abstract class Borrower extends Human {
 		return (this.id.equals(borrower.getId()));
 	}
 	
-	public static void initialize(){
-		Borrower.borrowersList.add(new Student("el1"));
-		Borrower.borrowersList.add(new Student("el2"));
-		Borrower.borrowersList.add(new Teacher("prof1"));
-	}
 
 }

@@ -40,4 +40,8 @@ public class Material {
 	public boolean equals(Material m){
 		return (this.type.toString().equals(m.getType()));
 	}
+	
+	public String toString(){
+		return type.toString()+(id);
+	}
 }

@@ -42,7 +42,7 @@ public abstract class Human {
 	}
 
 	/**
-	 * Methode getId. Cette methode retourne le nom de l'humain.
+	 * Methode getId. Cette methode retourne l'id de l'humain.
 	 * 
 	 * @return
 	 */
@@ -92,6 +92,6 @@ public abstract class Human {
 	}
 	
 	public String toString(){
-		return this.nom+" id : "+this.id+")";
+		return this.nom+" (id : "+this.id+")";
 	}
 }

@@ -34,6 +34,9 @@ public class Date {
 		this.minute = minute;
 	}
 
+	public Date() {
+	}
+
 	/**
 	 * Methode isACorrectDate. Verifie si la date est correcte.
 	 * 
@@ -234,7 +237,7 @@ public class Date {
 			day=Integer.valueOf(string.substring(0, 2));
 			month=Integer.valueOf(string.substring(3,5));
 			year=Integer.valueOf(string.substring(6));
-			date= new Date(day,month,year, 0,0);			
+			date= new Date(year,month,day, 0,0);			
 		}
 		return date;
 	}
@@ -256,6 +259,10 @@ public class Date {
 			}
 		}
 	return isBefore;
+	}
+	
+	public String toString(){
+		return day+"/"+month+"/"+year+ "  "+hour+":"+minute;
 	}
 	
 }

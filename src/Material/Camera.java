@@ -12,7 +12,7 @@ public class Camera extends Material {
 	 * Variable de classe, correspondant au nombre d'appareils photos existants.
 	 * 
 	 */
-	private static int numberOfCameras;
+	private static int numberOfCameras=0;
 	
 	/**
 	 * Constructeur de Camera.
@@ -20,7 +20,7 @@ public class Camera extends Material {
 	 */
 	public Camera(){
 		type=Type.CAMERA;
-		id="PHO"+String.valueOf(numberOfCameras);
+		id="CAM"+String.valueOf(numberOfCameras);
 		numberOfCameras++;
 	}
 	

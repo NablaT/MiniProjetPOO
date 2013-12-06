@@ -28,7 +28,7 @@ public class BorrowerMenu extends Menu {
 	 */
 	public BorrowerMenu() {
 		int choice;
-		Borrower.initialize();
+		
 		nbChoices = 4;
 		currentUser = getCurrentUser();
 		do {
@@ -84,15 +84,20 @@ public class BorrowerMenu extends Menu {
 
 	public void printInfo() {
 		System.out.println(currentUser);
+		printLoans();
+
+		
+	}
+
+	private void printLoans() {
 		ArrayList<Loan> userLoans=stock.getLoans(currentUser);
 		for (Loan l : userLoans){
 			System.out.println(l);
 		}
-		
 	}
 
 	public boolean getBackObject() {
-
+		
 		return stock.returnLoan(getString(), currentUser);
 	}
 
@@ -186,8 +191,7 @@ public class BorrowerMenu extends Menu {
 	 * @return
 	 */
 	public OperatingSystem getWantedOS() {
-		System.out
-				.println("Wich Operating System do you need ?\n	1-Android\n	2-Windows\n	3-Ios\n");
+		System.out.println("Wich Operating System do you need ?\n	1-Android\n	2-Windows\n	3-Ios\n");
 		int choice = getValidChoice(3, false);
 		OperatingSystem wantedOS = null;
 		switch (choice) {

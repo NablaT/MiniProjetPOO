@@ -12,7 +12,7 @@ public class Phone extends ComputerDevice {
 	 * Variable de classe, correspondant au nombre de téléphones existants.
 	 * 
 	 */
-	private static int numberOfPhones;
+	private static int numberOfPhones=0;
 	
 	/**
 	 * Constructeur par default de phone. 

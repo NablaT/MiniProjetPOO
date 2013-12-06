@@ -8,7 +8,7 @@ package Material;
 
 public class Tablet extends ComputerDevice{
 	
-	private static int numberOfTablet;
+	private static int numberOfTablet=0;
 	
 	/**
 	 * Constructeur par default classe Tablet.
@@ -17,7 +17,8 @@ public class Tablet extends ComputerDevice{
 	public Tablet(){
 		type=Type.TABLET;
 		super.typeOS=OperatingSystem.ANDROID;
-		super.id="TAB"+String.valueOf(numberOfTablet);
+		id="TAB"+numberOfTablet
+				;
 		numberOfTablet++;
 	}
 	

@@ -11,7 +11,9 @@ import Stock.*;
 
 public abstract class Menu {
 	protected int nbChoices;
-	protected StockManagement stock;
+	protected StockManagement stock=new DemoStock().getMstock();
+	
+
 	
 	public int getValidChoice(int nbChoix, boolean zeroIsValid){
 		System.out.println("Enter your choice : ");
@@ -44,7 +46,7 @@ public abstract class Menu {
 	}
 	
 	public Date getDate() {
-		Date date=null;
+		Date date=new Date();
 		try {
 			date = date.parse(getString());
 			} catch (Exception e) {}

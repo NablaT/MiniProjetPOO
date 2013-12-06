@@ -161,4 +161,9 @@ public class Loan {
 				&& this.borrower.getId().equals(loan.getBorrower().getId()) && this.description
 					.equals(loan.getDescription()));
 	}
+	
+	public String toString(){
+		return "A "+material+" from the "+dateLoan+" to "+dateBack+" pour "+description;
+		
+	}
 }

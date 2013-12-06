@@ -12,7 +12,7 @@ public class Headphone extends Material {
 	 * 
 	 */
 	
-	private static int numberOfHeadphones;
+	private static int numberOfHeadphones=0;
 	
 	/**
 	 * Constructeur de Headphone.

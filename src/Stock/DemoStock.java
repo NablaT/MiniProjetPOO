@@ -19,10 +19,9 @@ import Material.Tablet;
 public class DemoStock {
 
 	private StockManagement mstock; 
-	private ArrayList<Borrower> borrower; 
 	
 	public DemoStock(){
-		this.mstock=initializeMStock();
+		this.setMstock(initializeMStock());
 		initializeBorrower();
 	}
 	/**
@@ -30,10 +29,9 @@ public class DemoStock {
 	 */
 	
 	private void initializeBorrower() {
-		this.borrower=new ArrayList<Borrower>(); 
-		this.borrower.add(new Teacher("Pierre"));
-		this.borrower.add(new Student("Quentin"));
-		this.borrower.add(new Teacher("Luc"));
+		new Teacher("Pierre");
+		
+		
 	}
 
 	/**
@@ -90,10 +88,10 @@ public class DemoStock {
 		ArrayList<Loan> loans= new ArrayList<Loan>(); 
 		
 		Loan l1 = new Loan(new Date(2013, 12, 14, 15, 10), new Date(2013, 12,
-				17, 15, 10), this.borrower.get(0), " ", p1);
+				17, 15, 10), new Student("Quentin"), " ", p1);
 		
 		Loan l2 = new Loan(new Date(2013, 12, 18, 15, 10), new Date(2013, 12,
-				20, 15, 10), this.borrower.get(1), " ", t1);
+				20, 15, 10), new Teacher("Luc"), " ", t1);
 		
 		loans.add(l1);
 		loans.add(l2);
@@ -103,5 +101,11 @@ public class DemoStock {
 		
 		return mstock;
 		
+	}
+	public StockManagement getMstock() {
+		return mstock;
+	}
+	public void setMstock(StockManagement mstock) {
+		this.mstock = mstock;
 	}
 }
