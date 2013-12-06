@@ -206,7 +206,33 @@ public class StockManagementTest {
 
 	@Test
 	public void testGiveMeAvailableLoan() {
+		Teacher t1 = new Teacher("Pierre");
+		Phone p1 = new Phone();
+		Loan l1 = new Loan(new Date(2013, 12, 14, 15, 10), new Date(2013, 12,
+				17, 15, 10), t1, " ", p1);
+		Loan l2 = new Loan(new Date(2013, 12, 18, 15, 10), new Date(2013, 12,
+				20, 15, 10), t1, " ", p1);
+		
+		this.loans = new ArrayList<Loan>();
+		this.loans.add(l1);
+		this.loans.add(l2);
+		
 
+		Loan l3 = new Loan(new Date(2013, 12, 25, 15, 10), new Date(2013, 12,
+				27, 15, 10), t1, " ", p1);
+		
+		ArrayList<Loan> list2= new ArrayList<Loan>();
+		list2.add(l1);
+		list2.add(l2);
+		list2.add(l3);
+		
+		this.mstock.setLoans(list2);
+		assertEquals(this.mstock.giveMeAvailableLoan(this.loans),l3);
+		Loan l4 = new Loan(new Date(2013, 12, 23, 15, 10), new Date(2013, 12,
+				27, 15, 10), t1, " ", p1);
+		this.loans.add(l3);
+		this.loans.add(l4);
+		assertEquals(this.mstock.giveMeAvailableLoan(this.loans),null);
 	}
 
 	@Test

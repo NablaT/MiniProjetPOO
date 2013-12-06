@@ -233,6 +233,7 @@ public class StockManagement {
 	public Loan giveMeAvailableLoan(ArrayList<Loan> save) {
 		if (save.size() <= this.loans.size()) {
 			for (int i = 0; i < loans.size(); i++) {
+				System.out.println("tour "+i+" "+this.loans.get(i).getDateLoan().getDay());
 				if (materialIsAvalaible(save, this.loans.get(i))) {
 					return this.loans.get(i);
 				}
